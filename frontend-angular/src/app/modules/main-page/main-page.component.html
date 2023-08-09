@@ -1,0 +1,32 @@
+<div>
+    <form>
+        <h3>List of posts</h3>
+        <div *ngFor="let post of friendsPost">
+            <label>User:</label>
+            <div>
+                {{post.userId.firstName}}
+            </div>
+            <div>
+                {{post.userId.lastName}}
+            </div>
+            <label>Content:</label>
+            <div>
+                {{post.content}}
+            </div>
+            <Label>Number of likes:</Label>
+            <div>
+                {{post.likeNum}}
+            </div>
+            <button *ngIf="!post.isLiked" (click)="addLike(post.postId)">Like</button>
+            <button *ngIf="post.isLiked"(click)="dislike(post.postId)">Dislike</button>
+            <br>
+            <br>
+            <!-- <div>
+                {{post.content}}
+            </div>
+            <div>
+                {{post.content}}
+            </div> -->
+        </div>
+    </form>
+</div>

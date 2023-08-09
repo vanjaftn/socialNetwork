@@ -1,0 +1,27 @@
+<div>
+    <input type="text" [(ngModel)] = "searchUser">
+    <button (click)="search()">Search user</button>
+    <form>
+        <h3>List of users</h3>
+        <div *ngFor="let user of users">
+            <label>User: </label>
+            <br>
+            <img src="\assets\images\{{user.photoURL}}" height="100" alt="nesto"> <br/>
+            <!-- <label>Name:</label>
+            <div>
+                {{user.firstName}} 
+            </div> -->
+            <button (click)="friendProfile(user.userId)">View profile</button><br>
+            <label>Name : {{user.firstName}} {{user.lastName}}</label>
+            <br>
+            <!-- <div>
+                {{user.lastName}}
+            </div> -->
+            <label>Email : {{user.email}}</label>
+            <br>
+            <label *ngIf="user.hasAccepted" >You are friends with this user</label>
+            <br>
+            <br>
+        </div>
+    </form>
+</div>

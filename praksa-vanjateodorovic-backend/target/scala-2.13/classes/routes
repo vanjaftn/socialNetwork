@@ -1,0 +1,58 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /         controllers.HomeController.index()
+
+POST    /login  controllers.UserController.loginUser
+
+GET     /user   controllers.UserController.getAllUsers
+GET     /userWithPassword   controllers.UserController.getAllUsersWithPass
++ nocsrf
+POST     /searchUser   controllers.UserController.searchUser
+GET     /user/:id      controllers.UserController.getUser(id : Long)
++ nocsrf
+POST    /user  controllers.UserController.addUser
++ nocsrf
+POST    /updateUser  controllers.UserController.updateUser
++ nocsrf
+POST /changePhoto    controllers.UserController.changePhoto
++ nocsrf
+POST /deleteUser/:id    controllers.UserController.deleteUser(id: Long)
+GET    /getLoggedUserInfo  controllers.PostController.getLoggedUserInfo
++ nocsrf
+POST    /getUserInfo  controllers.PostController.getUserInfo
+
++ nocsrf
+POST    /sendRequest  controllers.FriendshipController.sendRequest
+GET    /friendship  controllers.FriendshipController.getAllFriendships
++ nocsrf
+POST    /acceptRequest  controllers.FriendshipController.acceptRequest
++ nocsrf
+POST    /rejectRequest  controllers.FriendshipController.rejectRequest
+GET    /getFriendsIds  controllers.FriendshipController.getFriendsIds
++ nocsrf
+POST    /doesFriendshipExist  controllers.FriendshipController.doesFriendshipExist
++ nocsrf
+POST    /friendshipExists  controllers.FriendshipController.friendshipExists
+GET    /getFriendsIds  controllers.FriendshipController.getFriendsIds
+
++ nocsrf
+POST    /post  controllers.PostController.addPost
++ nocsrf
+POST    /updatePost  controllers.PostController.updatePost
+GET    /post  controllers.PostController.getAllPosts
+GET    /getAllFriendsPosts  controllers.PostController.getAllFriendsPosts
+
++ nocsrf
+POST    /like  controllers.LikeController.addLike
++ nocsrf
+POST    /dislike  controllers.LikeController.dislike
+GET    /like controllers.LikeController.getAllLikes
++ nocsrf
+POST   /likeExists controllers.LikeController.likeExists
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

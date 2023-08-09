@@ -1,0 +1,27 @@
+<div>
+    <p>My profile</p>
+    <img src="\assets\images\{{user.photoURL}}" height="100" alt="nesto"> <br/>
+    <form>
+        {{user.firstName}}
+    </form>
+    <div>
+        {{user.lastName}}
+    </div>
+    <form *ngIf="accepted">
+        <h3>List of posts</h3>
+        <div *ngFor="let post of user.posts">
+            <div>
+                <label>{{post.content}}</label>
+            </div>
+        </div>
+
+    </form>
+    <div *ngIf="!accepted">
+        <button *ngIf="!user.isMyFriend" (click)="sendRequest(user.userId)">Send request</button>
+        <button *ngIf="user.isMyFriend && !iSendequest" (click)="acceptRequest()">Accept request</button>
+        <button *ngIf="user.isMyFriend && !iSendequest" (click)="rejectRequest()">Reject request</button>
+        <h3 *ngIf="iSendequest">Waiting for response</h3>
+
+    </div>
+</div>
+<!-- <button  onclick="location.href = '/friendRequests'">Friends requests</button> -->

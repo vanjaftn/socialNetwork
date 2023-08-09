@@ -1,0 +1,11 @@
+<div>
+    <p>My profile</p>
+    <img src="\assets\images\{{user.photoURL}}" height="100" alt="no image"><br>
+    <!-- <label>Chage profile photo</label><br> -->
+    <input type="file" id="my-file" (change)="changePhoto($event)"><br>
+    <button *ngIf="isClicked"  (click)="submit()">Chage profile photo</button><br>
+    <input type="text" value={{user.firstName}} [(ngModel)] = "newName"><br>
+    <input type="text" value= {{user.lastName}} [(ngModel)] = "newLastName"><br>
+    <input type="text" value= {{user.email}} disabled><br>
+    <button (click)="updateProfile()">Update</button>
+</div>

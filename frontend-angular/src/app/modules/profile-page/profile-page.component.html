@@ -1,0 +1,29 @@
+<div>
+    <button (click)="updateProfile()">Update profile</button><br>
+    <p>My profile</p>
+    <img src="\assets\images\{{user.photoURL}}" height="100" alt="nesto"> <br/>
+    <label>
+        {{user.firstName}}
+    </label><br>
+    <label>
+        {{user.lastName}}
+    </label><br>
+    <form>
+        <h3>List of posts</h3>
+        <div *ngFor="let post of user.posts">
+            <div>
+                <label>{{post.content}}</label>
+                <!-- <button (click)="updatePost(post.postId)" id="postId">Update post</button> -->
+                <button *ngIf="!editorOpened" (click)="opedEditorForPost(post.postId, post.content)" id="postId">Update post</button>
+                <input *ngIf="editorOpened && post.postId==postForEditing" style="height: 100px; width: 300px;" type="text" name="postText" id="postText" value="updatedPost" [(ngModel)] = "updatedPost">
+                <button *ngIf="editorOpened && post.postId==postForEditing" (click)="updatePost()" id="postId">Update post</button>
+                <button *ngIf="editorOpened && post.postId==postForEditing" (click)="cancelUpdate()" id="postId">Cancel</button>
+            </div>
+        </div>
+
+    </form>
+    <input style="height: 100px; width: 300px;" type="text" [(ngModel)] = "newPost">
+    <button (click)="addPost()">Add post</button><br>
+    <button (click)="myFriends()">Friends</button>
+</div>
+<!-- <button  onclick="location.href = '/friendRequests'">Friends requests</button> -->
